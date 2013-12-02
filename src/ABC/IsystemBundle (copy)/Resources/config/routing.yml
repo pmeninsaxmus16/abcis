@@ -1,8 +1,0 @@
-abc_isystem_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: ABCIsystemBundle:Default:index }
-
-ABCAnnotations:
-    resource: "@ABCIsystemBundle/Controller/"
-    prefix:   /
-    type:     annotation

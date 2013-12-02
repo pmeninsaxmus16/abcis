@@ -1,7 +1,0 @@
-parameters:
-#    abc_admission.example.class: ABC\AdmissionBundle\Example
-
-services:
-#    abc_admission.example:
-#        class: %abc_admission.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
