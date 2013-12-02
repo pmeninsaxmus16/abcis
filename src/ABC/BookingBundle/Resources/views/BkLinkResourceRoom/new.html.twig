@@ -1,0 +1,24 @@
+{% extends "BookingBundle::layoutMatto.html.twig" %}
+{% block title %} New City {% endblock %}
+{% block scripthead %}
+ <script src="{{ asset('Resources/js/bootstrap-dropdown.js') }}"></script>
+{% endblock %}
+{% block bodycontenido -%}
+
+    <form action="{{ path('booking_mtto_bklinkresourceroom_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+        <button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-list"></i> Back to the list</button>                
+        <button type="submit"class="btn btn-primary"><i class=""></i> Save</button>
+          {#  <button type="submit">Create</button> #}
+        </p>
+    </form>
+{#
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('booking_mtto_bklinkresourceroom') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>   #}
+{% endblock %}

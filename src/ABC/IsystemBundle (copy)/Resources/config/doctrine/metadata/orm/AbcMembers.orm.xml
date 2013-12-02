@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AbcMembers" table="abc_members">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idCard" type="string" column="id_card" length="10" nullable="false"/>
+    <field name="admonCode" type="string" column="admon_code" length="10" nullable="true"/>
+    <field name="lastname" type="string" column="lastname" length="80" nullable="false"/>
+    <field name="firstname" type="string" column="firstname" length="45" nullable="false"/>
+    <field name="middlename" type="string" column="middlename" length="45" nullable="true"/>
+    <field name="birthdate" type="date" column="birthdate" nullable="true"/>
+    <field name="gender" type="string" column="gender" length="7" nullable="false"/>
+    <field name="placeOfBirthdate" type="string" column="place_of_birthdate" length="80" nullable="true"/>
+    <field name="nickname" type="string" column="nickname" length="80" nullable="true"/>
+    <field name="login" type="string" column="login" length="50" nullable="false"/>
+    <field name="sitewideLogin" type="string" column="sitewide_login" length="180" nullable="false"/>
+    <field name="status" type="string" column="status" nullable="false"/>
+    <field name="createdDate" type="datetime" column="created_date" nullable="false"/>
+    <field name="password" type="string" column="password" length="255" nullable="false"/>
+    <field name="salt" type="string" column="salt" length="255" nullable="false"/>
+    <many-to-one field="saludation" target-entity="AbcSadulation">
+      <join-columns>
+        <join-column name="saludation" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

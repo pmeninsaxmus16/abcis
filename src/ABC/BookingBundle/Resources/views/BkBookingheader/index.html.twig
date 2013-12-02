@@ -1,0 +1,93 @@
+{% extends "BookingBundle::layoutMatto.html.twig" %}
+{% block title %} Booking header list{% endblock %}
+
+{% block scripthead %}
+ <script src="{{ asset('Resources/js/bootstrap-tooltip.js') }}"></script>
+{% endblock %}
+ 
+{% block sidebar %}{% endblock %} 
+
+{% block contenido %}
+{% import "BookingBundle:Default:tools.html.twig" as print %}
+ 
+<div class="span12 ">
+<h3>{{block('title')}}</h3> 
+{#
+<p><a href="#save" class="btn btn-primary"  data-toggle="modal">
+<i class="icon-plus icon-white"></i> Add new</a></p>#}
+
+    <table class="table table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Subject</th>
+                <th>Location</th>
+                <th>Description</th>
+                <th>Owner</th>
+                <th>Is active</th>
+                <th>Ip</th>
+             {#   <th>Created date</th>     #}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in pagination %}
+            <tr>
+                <td>{{ entity.id }}</td>
+                <td>{{ entity.subject }}</td>
+                <td>{{ entity.location }}</td>
+                <td>{{ entity.description }}</td>
+                <td>{{ entity.owner }}</td>
+                <td>{{ entity.isActive }}</td>
+                <td>{{ entity.ip }}</td>
+              {#  <td>{% if entity.createdDate %}{{ entity.createdDate|date('Y-m-d H:i:s') }}{% endif %}</td>  #}
+                <td>{{print.action('booking_mtto_bkbookingheader_show','booking_mtto_bkbookingheader_edit',entity.id)}}</td>
+                {#<td>
+                <ul>
+                    <li>
+                        <a href="{{ path('bkbookingheader_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('bkbookingheader_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>#}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {#
+        <ul>
+        <li>
+            <a href="{{ path('bkbookingheader_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>#}
+</div>
+<div class="pagination pagination-small pagination-right">
+{{ knp_pagination_render(pagination) }}
+</div>
+{{ print.modalaction('Booking header','save')}}
+{{ print.modalaction('Booking header','edit')}}
+{{ print.modalaction('Booking header','show')}}
+{% endblock %}
+{% block javascripts %}
+<script>
+$(document).ready(function(){
+   $('#save').on('show', function () {
+         $('.modal-body-save').load('{{ path('booking_mtto_bkbookingheader_new') }}'); 
+  // do something…
+   });
+   $('#edit').on('show', function () {
+        
+  // do something…
+    });
+   $('#show').on('show', function () {
+         
+  // do something…
+    });
+
+});
+</script>
+    {% endblock %}

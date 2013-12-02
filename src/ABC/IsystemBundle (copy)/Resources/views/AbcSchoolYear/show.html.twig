@@ -1,0 +1,68 @@
+{% extends "ABCIsystemBundle::layoutAdmin.html.twig" %}
+{% block title %} School Year {% endblock %}
+{% block scripthead %}
+ <script src="{{ asset('Resources/js/bootstrap-dropdown.js') }}"></script>
+{% endblock %}
+
+
+{% block bodycontenido %}
+{#
+<h3>{{block('title')}}</h3>
+#}
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ entity.code }}</td>
+            </tr>
+            <tr>
+                <th>Startdate</th>
+                <td>{{ entity.startDate|date('d-M-Y') }}</td>
+            </tr>
+            <tr>
+                <th>Enddate</th>
+                <td>{{ entity.endDate|date('d-M-Y') }}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td>{{ entity.active }}</td>
+            </tr>
+            <tr>
+                <th>Nextyear</th>
+                <td>{{ entity.nextYear }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        <button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-list"></i> Back to the list</button>
+    </p>
+    {#
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('isystem_admin_mtto_sy') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('isystem_admin_mtto_sy_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('isystem_admin_mtto_sy_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+    </ul>
+    #}
+{% endblock %}

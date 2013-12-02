@@ -1,0 +1,38 @@
+{% extends "BookingBundle::layoutMatto.html.twig" %}
+{% block title %} Resource category edit {% endblock %}
+{% block scripthead %}
+ <script src="{{ asset('Resources/js/bootstrap-dropdown.js') }}"></script>
+{% endblock %}
+
+{% block body -%}
+
+    <form action="{{ path('booking_mtto_bkresourcecategory_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+        <input type="hidden" name="_method" value="PUT" />
+        {{ form_widget(edit_form) }}
+        <p>
+            <button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-list"></i> Back to the list</button>
+            <button type="submit" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</button>
+            {#<button type="submit">Edit</button>#}
+        </p>
+    </form>
+{#    <form action="{{ path('booking_mtto_bkresourcecategory_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit" class="btn btn-danger"><i class="icon-remove icon-white"></i>Delete</button>
+        </form> #}
+{#
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('booking_mtto_bkresourcecategory') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('booking_mtto_bkresourcecategory_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>#}
+{% endblock %}

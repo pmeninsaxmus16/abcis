@@ -1,0 +1,17 @@
+{% extends "ABCIsystemBundle::layoutAdmin.html.twig" %}
+{% block title %} New Department {% endblock %}
+{% block scripthead %}
+ <script src="{{ asset('Resources/js/bootstrap-dropdown.js') }}"></script>
+{% endblock %}
+{% block bodycontenido -%}
+
+    {#<h3>{{block('title')}}</h3>#}
+
+    <form action="{{ path('isystem_admin_mtto_depto_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+        <button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-list"></i> Back to the list</button>                
+        <button type="submit"class="btn btn-primary"><i class=""></i> Save</button>
+        </p>
+    </form>
+{% endblock %}

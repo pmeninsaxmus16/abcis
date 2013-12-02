@@ -1,0 +1,80 @@
+{% extends "ABCIsystemBundle::layoutAdmin.html.twig" %}
+{% block title %} Class Year {% endblock %}
+
+{% block scripthead %}
+ <script src="{{ asset('Resources/js/bootstrap-tooltip.js') }}"></script>
+{% endblock %}
+ 
+{% block sidebar %}{% endblock %} 
+
+{% block contenido %}
+{% import "ABCIsystemBundle:Default:tools.html.twig" as print %}
+
+<div class="span12 ">
+<h3>
+{{block('title')}}   
+</h3>  
+
+<p><a href="#save" class="btn btn-primary"  data-toggle="modal">
+<i class="icon-plus icon-white"></i> Add new
+</a></p>
+
+   {#<a href="{{ path('isystem_admin_mtto_new') }}" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add new</a>#}
+    <table class="table table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Class Year</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in pagination %}
+            <tr>
+                <td><a href="{{ path('isystem_admin_mtto_classyear_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.classYear }}</td>
+                <td>
+                    {{ print.action('isystem_admin_mtto_classyear_show','isystem_admin_mtto_classyear_edit', entity.id)}}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{#
+    <ul>
+        <li>
+            <a href="{{ path('isystem_admin_mtto_classyear_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+#}
+</div>
+<div class="pagination pagination-small pagination-right">
+{{ knp_pagination_render(pagination) }}
+</div>
+
+{{ print.modalaction('Addresses Types','save')}}
+{{ print.modalaction('Addresses Types','edit')}}
+{{ print.modalaction('Addresses Types','show')}}
+{% endblock %}
+{% block javascripts %}
+<script>
+$(document).ready(function(){
+   $('#save').on('show', function () {
+         $('.modal-body-save').load('{{ path('isystem_admin_mtto_classyear_new') }}');
+  // do something…
+   });
+   $('#edit').on('show', function () {
+        
+  // do something…
+    });
+   $('#show').on('show', function () {
+         
+  // do something…
+    });
+});
+
+
+</script>
+{% endblock %}

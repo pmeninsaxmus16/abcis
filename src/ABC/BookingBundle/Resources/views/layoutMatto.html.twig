@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   {% block meta %}
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   {% endblock %}
+   
+   <title>{% block title %} Booking System {% endblock %}</title>
+
+   {% block scriptheadprimary %}
+   <link href="{{ asset('Resources/css/bootstrap.css') }}" rel="stylesheet" media="all">
+   <link href="{{ asset('Resources/css/bootstrap-responsive.css') }}" rel="stylesheet" media="all">
+   <script src="{{ asset('Resources/js/jquery.js') }}"></script>
+   <script src="{{ asset('Resources/js/bootstrap.js') }}"></script>  
+   <script src="{{ asset('Resources/js/bootstrap-alert.js') }}"></script>
+   <script src="{{ asset('Resources/js/bootstrap-tooltip.js') }}"></script>
+   <script src="{{ asset('Resources/js/bootstrap-popover.js') }}"></script>
+
+   {% endblock %}
+   {% block scripthead %}{% endblock %}
+   <style type="text/css">{% block stylesheets %}{% endblock %}</style> 
+</head>
+
+<body>
+{# ###### BLOCK CONTIENTE TODO EL BODY ##### #}
+{% block body %}
+<div class="row-fluid">
+  <div class="span12">
+   {# ###### BLOCK MUESTRA EL MENU ##### #}
+   {% block menu %}
+   <div class="navbar navbar-inverse navbar-fixed-top">
+   <div class="navbar-inner">
+   <div class="container"> 
+
+     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+	<a class="brand" href="https://www.abc.edu.sv/system/abcis/web/booking/index.php">[ABC] &mdash; Booking System </a>
+	   <div class="nav-collapse collapse">
+
+	    <ul class="nav">
+	      <li class="active"><a href="https://www.abc.edu.sv/system/abcis/web/booking/index.php">Home</a></li>
+	      <li><a href="https://www.abc.edu.sv/system/abcis/web/app_dev.php/booking/mtto/bkresource">Resources</a></li>
+	      <li><a href="https://www.abc.edu.sv/system/abcis/web/app_dev.php/booking/mtto/bkroom">Rooms</a></li>
+	      <li><a href="https://www.abc.edu.sv/system/abcis/web/app_dev.php/booking/mtto/bklinkresourceroom">Link resources with rooms</a></li>
+	      <li><a href="https://www.abc.edu.sv/system/abcis/web/app_dev.php/booking/mtto/bksection">Sections</a></li>
+	       <li><a href="https://www.abc.edu.sv/system/abcis/web/app_dev.php/booking/mtto/bkresourcecategory">Category of resources</a></li>
+	    </ul>
+	    
+ 
+	    <ul class="nav pull-right">
+		{% if app.user %}
+		   <li ><a href="">{{ app.user.username  }} | log-out</a></li>
+		{% else %}
+		   <li ><a href="">login</a></li>
+		{% endif %}
+	    </ul>
+
+   </div>
+   </div>
+   </div>
+   </div>    
+          
+   {% endblock %}
+   {# ###### BLOCK MUESTRA EL MENU ##### #}
+  </div>
+</div>
+<div class="container-fluid">
+{# ###### BLOCK MUESTRA EL BODY ##### #}
+	<div class="row-fluid">
+	{% block bodycontenido %}
+		{# ###### BLOCK MUESTRA EL CONTENIDO A LA DERECHA ##### #}
+		<div class="span3">{% block sidebar %}{% endblock %}</div>
+    	        {# ###### BLOCK MUESTRA EL CONTENIDO A LA DERECHA ##### #}
+
+		{# ###### BLOCK MUESTRA EL CONTENIDO A LA DERECHA ##### #}
+		<div class="span9">{% block contenido %}{% endblock %}</div>
+		{# ###### BLOCK MUESTRA EL CONTENIDO A LA DERECHA ##### #} 
+	{% endblock %}
+	</div>
+	{# ###### BLOCK MUESTRA EL BODY ##### #}
+</div>
+{% endblock %}
+{# ###### BLOCK CONTIENTE TODO EL BODY ##### #}
+
+{# ###### BLOCK PARA JAVASCRIPTS ##### #}
+{% block javascripts %}
+{% endblock %}   
+
+{% block javascriptsOthers %}
+{% endblock %}         
+{# ###### BLOCK PARA JAVASCRIPTS ##### #}   
+</body>
+</html>

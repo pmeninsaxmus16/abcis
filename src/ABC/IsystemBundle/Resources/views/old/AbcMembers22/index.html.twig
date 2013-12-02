@@ -1,0 +1,97 @@
+{% extends "ABCIsystemBundle::layoutAdmin.html.twig" %}
+{% block title %} Members List {% endblock %}
+
+{% block scripthead %}
+ <script src="{{ asset('Resources/js/bootstrap-tooltip.js') }}"></script>
+{% endblock %}
+ 
+{% block sidebar %}{% endblock %} 
+
+{% block contenido %}
+{% import "ABCIsystemBundle:Default:tools.html.twig" as print %}
+
+<div class="span12 ">
+<h3>
+{{block('title')}}   
+</h3>  
+{#
+<p><a href="#save" class="btn btn-primary"  data-toggle="modal">
+<i class="icon-plus icon-white"></i> Add new
+</a>
+    
+</p>#}
+ <form class="navbar-form navbar-left" role="search">
+    <div class="input-append">
+    <input type="text" class="form-control" id="search" placeholder="Search">
+    <span class="add-on"><i class="icon-search"></i></span>
+    </div>     
+</form>    
+<div id="tablacontenido">
+    <table class="table table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>IDCARD</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Birthdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in pagination %}
+            <tr>
+                <td>{{ entity.idCard }}</td>
+                <td>{{ entity.lastname ~ ', ' ~ entity.firstname ~ ' '~ entity.middlename }}</td>
+                <td>{{ entity.gender}}</td>
+                <td>{{ entity.birthdate|date('d-m-Y')}}</td>
+                <td>
+                  
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+<div class="pagination pagination-small pagination-right">
+{{ knp_pagination_render(pagination) }}
+</div>
+{{ print.modalaction('Tribe','save')}}
+{{ print.modalaction('Tribe','edit')}}
+{{ print.modalaction('Tribe','show')}}
+{% endblock %}
+{% block javascripts %}
+<script>
+$(document).ready(function(){
+    $('#search').keyup(function() {
+        var order ='search='+$(this).val();
+	var url="{{path('isystem_admin_members_search')}}";
+	$.post(
+                url,order, 
+		function(datao){
+                
+ 		$('#tablacontenido').html(datao);
+		
+		});
+	
+    }); {# fin de change #} 
+    
+
+        
+    $('#save').on('show', function () {
+         $('.modal-body-save').load('{{ path('isystem_admin_mtto_tribe_new') }}');
+  // do something…
+   });
+   $('#edit').on('show', function () {
+        
+  // do something…
+    });
+   $('#show').on('show', function () {
+         
+  // do something…
+    });
+});
+
+
+</script>
+{% endblock %}

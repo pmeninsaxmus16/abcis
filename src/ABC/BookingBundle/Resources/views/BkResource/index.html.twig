@@ -1,0 +1,92 @@
+{% extends "BookingBundle::layoutMatto.html.twig" %}
+{% block title %} Resources List {% endblock %}
+{% block scripthead %}
+ <script src="{{ asset('Resources/js/bootstrap-tooltip.js') }}"></script>
+{% endblock %}
+{% block sidebar %}{% endblock %} 
+{% block contenido %}
+{% import "BookingBundle:Default:tools.html.twig" as print %}
+<div class="span12 ">
+<h3>{{block('title')}}</h3>  
+
+<a href="#save" class="btn btn-primary"  data-toggle="modal">
+<i class="icon-plus icon-white"></i> Add new</a>
+</p>
+<table class="table table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+             {#   <th>Description</th>  #}
+                <th>Quantity</th>
+             {#   <th>Time before booking</th> 
+                <th>Is active</th>    
+                <th>Created date</th>   #}
+                <th>Category of resources</th>
+             {#   <th>Timetable id</th> #}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in pagination %}
+            <tr>
+                <td>{{ entity.id }}</td>
+                <td>{{ entity.name }}</td>
+              {#  <td>{{ entity.description }}</td> #}
+                <td>{{ entity.quantity }}</td>
+              {# <td>{{ entity.timeBeforeBooking|date('H:i:s') }}</td>  
+                <td>{{ entity.isActive }}</td>    
+                <td>{% if entity.createdDate %}{{ entity.createdDate|date('Y-m-d H:i:s') }}{% endif %}</td>#}
+                <td>{{ entity.category.name }}</td>
+              {#  <td>{{ entity.timetableId }}</td> #}
+                <td> 
+                    {{ print.action('booking_mtto_bkresource_show','booking_mtto_bkresource_edit', entity.id)}}
+               {# <ul>
+                    <li>
+                        <a href="{{ path('bkresource_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('bkresource_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul> #}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="pagination pagination-small pagination-right">
+{{ knp_pagination_render(pagination) }}
+</div>
+{{ print.modalaction('Resource','save')}}
+{{ print.modalaction('Resource','edit')}}
+{{ print.modalaction('Resource','show')}}
+
+{% endblock %}
+{% block javascripts %}
+<script>
+$(document).ready(function(){
+   $('#save').on('show', function () {
+         $('.modal-body-save').load('{{ path('booking_mtto_bkresource_new') }}');
+  // do something…
+   });
+   $('#edit').on('show', function () {
+        
+  // do something…
+    });
+   $('#show').on('show', function () {
+         
+  // do something…
+    });
+});
+</script>
+{% endblock %}
+{#
+        <ul>
+        <li>
+            <a href="{{ path('bkresource_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %} #}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AbcSyClass" table="abc_sy_class">
+    <one-to-one field="sy" target-entity="AbcSchoolYear">
+      <join-columns>
+        <join-column name="sy" referenced-column-name="id"/>
+      </join-columns>
+    </one-to-one>
+    <one-to-one field="grade" target-entity="AbcGrade">
+      <join-columns>
+        <join-column name="grade" referenced-column-name="id"/>
+      </join-columns>
+    </one-to-one>
+    <one-to-one field="classYear" target-entity="AbcClassYear">
+      <join-columns>
+        <join-column name="class_year" referenced-column-name="id"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

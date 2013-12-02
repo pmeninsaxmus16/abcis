@@ -1,0 +1,17 @@
+booking_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: BookingBundle:Default:index }
+
+articulos:
+  pattern: /articulos
+  defaults: { _controller: BookingBundle:Default:articulos }
+  
+articulo:
+  pattern: /articulo/{id}
+  defaults: { _controller: BookingBundle:Default:articulo }
+  
+ABCAnnotations:
+    resource: "@BookingBundle/Controller/"
+    prefix:   /
+    type:     annotation
+  

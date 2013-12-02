@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AbcMembersPersonalId" table="abc_members_personal_id">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="document" type="string" column="document" length="45" nullable="false"/>
+    <field name="createdDate" type="datetime" column="created_date" nullable="false"/>
+    <many-to-one field="member" target-entity="AbcMembers">
+      <join-columns>
+        <join-column name="member" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idType" target-entity="AbcIdType">
+      <join-columns>
+        <join-column name="id_type" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

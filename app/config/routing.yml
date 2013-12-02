@@ -1,0 +1,12 @@
+abc_admission:
+    resource: "@ABCAdmissionBundle/Resources/config/routing.yml"
+    prefix:   /
+
+booking:
+    resource: "@BookingBundle/Resources/config/routing.yml"
+    prefix:   /
+
+abc_isystem:
+    resource: "@ABCIsystemBundle/Resources/config/routing.yml"
+    prefix:   /
+

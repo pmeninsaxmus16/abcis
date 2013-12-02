@@ -1,0 +1,50 @@
+{% extends "ABCIsystemBundle::layoutAdmin.html.twig" %}
+{% block title %} Students List {% endblock %}
+{% block js %}
+<script src="{{ asset('Resources/js/jquery.ba-dotimeout.js') }}"></script>
+{% endblock %}
+{% block sidebar %}
+{% include "ABCIsystemBundle:AbcLayout:sidebar.html.twig" with {"option": "members" }  %}	 
+{% endblock %} 
+
+{% block contenido %}
+<div class="row-fluid">
+ <!-- block -->
+  <div class="block">
+    <div class="navbar navbar-inner block-header">
+       <div class="muted pull-left">{{block('title')}}</div>
+       <div class="pull-right"><span class="badge badge-warning">#</span></div>
+    </div>
+    <div class="block-content collapse in">
+    {#<p><a href="#save" class="btn btn-primary"  data-toggle="modal"><i class="icon-plus icon-white"></i> Add new</a></p>#}
+    <form class="navbar-form navbar-left" role="search">
+       <div class="input-append">
+       <input type="text" class="form-control" id="search" placeholder="Search" value="{{search}}">
+       <span class="add-on"><i class="icon-search"></i></span>
+       </div>     
+    </form>    
+    <div id="tablacontenido">
+    {% include "ABCIsystemBundle:AbcMembersStudents:membersTable.html.twig" %}
+    </div>
+    </div> {# end div block-content collapse in#}
+   </div> {# end div block #}
+</div>
+
+{% endblock %}
+{% block javascripts %}
+<script>
+$(document).ready(function(){
+    $('#search').keyup(function(){
+        $(this).doTimeout( '#tablacontenido', 250, function(){
+        //var order ='search='+$(this).val();
+            $('#tablacontenido').html('<center><img src="{{ asset('Resources/img/loading.gif') }}"></center>');
+            var url="{{path('isystem_admin_students_search')}}";
+            $.post(url, { search: $(this).val() }).done(function(data){
+                $('#tablacontenido').html(data);
+            });
+        });
+    });   
+
+});
+</script>
+{% endblock %}

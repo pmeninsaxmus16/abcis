@@ -1,0 +1,42 @@
+{% extends "ABCIsystemBundle::layoutAdmin.html.twig" %}
+{% block title %} Saludation Show {% endblock %}
+{% block scripthead %}
+ <script src="{{ asset('Resources/js/bootstrap-dropdown.js') }}"></script>
+{% endblock %}
+
+
+{% block bodycontenido %}
+
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Abbreviation EN</th>
+                <td>{{ entity.abbreviationEn }}</td>
+            </tr>
+            <tr>
+                <th>Abbreviation ES</th>
+                <td>{{ entity.abbreviationEs }}</td>
+            </tr>
+            <tr>
+                <th>Saludation EN</th>
+                <td>{{ entity.saludationEn }}</td>
+            </tr>
+            <tr>
+                <th>Saludation EN</th>
+                <td>{{ entity.saludationEs }}</td>
+            </tr>
+            <tr>
+                <th>Created Date</th>
+                <td>{{ entity.createdDate|date('H:i:s d-m-Y') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+ <p>
+    <button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-list"></i> Back to the list</button>
+    </p>
+{% endblock %}

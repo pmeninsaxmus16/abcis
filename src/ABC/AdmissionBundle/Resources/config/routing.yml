@@ -1,0 +1,4 @@
+ABCAnnotationsAdmission:
+    resource: "@ABCAdmissionBundle/Controller/"
+    prefix:   /
+    type:     annotation

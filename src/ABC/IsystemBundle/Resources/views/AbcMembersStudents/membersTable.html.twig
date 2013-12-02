@@ -1,0 +1,39 @@
+
+<table class="table table-bordered table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>IDCARD</th>
+                    <th>Admon Code</th>
+                    <th>Name</th>
+                    <th>Nickname</th>
+                    <th>Login</th>
+                    <th>E-mail</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+        <tbody>
+        {% for member in pagination %}
+        <tr><td>{{ loop.index }}</td>
+                <td>{{ member.idCard }}</td>
+                 <td>{{member.admonCode}}</td>
+                <td>{{ member.lastname ~ ', ' ~ member.firstname ~ ' '~ member.middlename }}</td>
+                <td>{{ member.nickname }}</td>
+                <td>{{ member.login}}</td>
+                <td>{{ member.sitewideLogin}}</td>
+                <td align="center">
+                    <center>
+                    {% if (member.status)=='active' %} <i class="icon-ok"></i>
+                    {% elseif(member.status)=='not_active' %} <i class="icon-remove"></i>
+                    {% endif %}
+                    </center>
+                </td>
+                <td></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<div class="pagination pagination-small pagination-right">
+    {{ knp_pagination_render(pagination) }}
+</div> {# end div pagination pagination-small pagination-right #}

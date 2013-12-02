@@ -1,0 +1,24 @@
+<ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+   
+   <li {% if option =='dashboard' %} class="active" {%endif%}>
+       <a href="{{path('isystem_welcome')}}"><i class="icon-chevron-right"></i> Dashboard</a>
+   </li>
+   <li {% if option =='members' %}class="active" {%endif%}>
+       <a href="{{path('isystem_admin_members') }}"><i class="icon-chevron-right"></i> Applicant</a>
+
+   </li>
+   <li>
+       <a href="#"><i class="icon-chevron-right"></i> Catalogos</a>
+   </li>
+</ul>
+<div class="well"  style="max-width: 300px; ">
+    <ul class="nav nav-list  nav-collapse collapse">
+    <li class="nav-header">Applicants List</li>
+    <li><a href="#">Requested</a></li>
+    <li><a href="#">Examen</a></li>
+    <li><a href="#">Accepted</a></li>
+    <li><a href="#">No Accepted</a></li>
+    <li class="nav-header">Search</li>
+    <li class="active"><a href="#">All Applicants</a></li>
+    </ul>
+</div>

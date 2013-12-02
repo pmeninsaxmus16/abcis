@@ -1,0 +1,49 @@
+
+<table class="table table-bordered table-hover table-condensed">
+            <thead>
+                <tr>
+                <th>No</th>
+		<th>Username</th>
+                <th>E-mail</th>			
+		<th>Role</th>
+                <th>Actions</th>
+                </tr>
+            </thead>
+        <tbody>
+        {% for user in pagination %}
+        <tr><td>{{ loop.index }}</td>
+<td>{{ user.username }}</td>
+			<td>{{ user.emailAddress }}</td>
+			{% for roles in user.roles %}
+			<td>{{ roles }}</td>
+			{% endfor %}
+            <td>
+				{#{% include 'ABCAdmissionBundle:Users:msj.html.twig' %}#}
+				<div class="btn-group">
+			  	<a class="btn btn-small btn-primary" href="#"> Actions</a>
+				<a class="btn btn-small btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+				<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+				{#<li>
+				<a data-toggle="modal" href="{{ path('admin_users_show', { 'id': entity.id }) }}" data-target="#modal_{{entity.id}}">
+				<i class="icon-eye-open"></i> View</a>
+				</li>#}
+				<a href="{{ path('admin_users_edit', { 'id': user.id }) }}">
+				<i class="icon-pencil"></i> Edit</a>
+				</li>
+				<li>
+				<a href="{{ path('admin_users_delete', { 'id': user.id }) }}">
+				<i class="icon-trash"></i> Delete</a></li>
+				</ul>
+				</div>
+			
+				
+				
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<div class="pagination pagination-small pagination-right">
+    {{ knp_pagination_render(pagination) }}
+</div> {# end div pagination pagination-small pagination-right #}

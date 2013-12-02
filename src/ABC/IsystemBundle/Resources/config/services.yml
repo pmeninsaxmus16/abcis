@@ -1,0 +1,11 @@
+parameters:
+#    abc_isystem.example.class: ABC\IsystemBundle\Example
+
+services:
+#    abc_isystem.example:
+#        class: %abc_isystem.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }

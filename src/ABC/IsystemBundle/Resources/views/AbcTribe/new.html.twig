@@ -1,0 +1,17 @@
+{% extends "ABCIsystemBundle::layoutAdmin.html.twig" %}
+{% block title %} New Tribe {% endblock %}
+{% block scripthead %}
+ <script src="{{ asset('Resources/js/bootstrap-dropdown.js') }}"></script>
+ <script src="{{ asset('Resources/datepicker/js/bootstrap-datepicker.js') }}"></script>
+ <link href="{{ asset('Resources/datepicker/css/datepicker.css') }}" rel="stylesheet" media="all">
+{% endblock %}
+{% block bodycontenido -%}
+
+    <form action="{{ path('isystem_admin_mtto_tribe_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-list"></i> Back to the list</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </p>
+    </form>
+{% endblock %}

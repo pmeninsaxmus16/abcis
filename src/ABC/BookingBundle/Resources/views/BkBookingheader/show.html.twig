@@ -1,0 +1,66 @@
+{% extends "BookingBundle::layoutMatto.html.twig" %}
+{% block title%} Notification Show {%endblock%}
+{% block scripthead %}
+ <script src="{{ asset('Resources/js/bootstrap-dropdown.js') }}"></script>
+{% endblock %}
+
+{% block bodycontenido%}
+
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Subject</th>
+                <td>{{ entity.subject }}</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>{{ entity.location }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>Owner</th>
+                <td>{{ entity.owner }}</td>
+            </tr>
+            <tr>
+                <th>Is active</th>
+                <td>{{ entity.isActive }}</td>
+            </tr>
+            <tr>
+                <th>Ip Address</th>
+                <td>{{ entity.ip }}</td>
+            </tr>
+         {#   <tr>
+                <th>Created date</th>
+                <td>{{ entity.createdDate|date('Y-m-d H:i:s') }}</td>
+            </tr>   #}
+        </tbody>
+    </table>
+ <p> <button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-list"></i> Back to the list</button> </p>
+{#
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('bkbookingheader') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('bkbookingheader_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('bkbookingheader_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>#}
+{% endblock %}

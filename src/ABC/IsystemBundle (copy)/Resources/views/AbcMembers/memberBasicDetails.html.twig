@@ -1,0 +1,79 @@
+
+{% block basicDetails %}
+<div class="row-fluid">
+<div class="span12">
+  <div class="row-fluid">
+    <div class="span6">
+    {{ form_label(form.lastname) }}
+    {{ form_widget(form.lastname, {'attr': {'class': 'span12'}}) }}
+     <div class="row-fluid">         
+        <div class="span6">
+        {{ form_label(form.firstname) }}
+        {{ form_widget(form.firstname) }}
+                
+        {{ form_label(form.gender) }}
+        {{ form_widget(form.gender) }}
+       
+        {{ form_label(form.birthdate) }}
+        {{ form_widget(form.birthdate) }}     
+       
+        {{ form_label(form.nickname) }}
+        {{ form_widget(form.nickname) }}
+       </div>
+      <div class="span6">
+        {{ form_label(form.middlename) }}
+        {{ form_widget(form.middlename) }}
+
+        {{ form_label(form.saludation) }}
+        {{ form_widget(form.saludation) }}
+
+        {{ form_label(form.placeOfBirthdate) }}
+        {{ form_widget(form.placeOfBirthdate) }} 
+              
+        {{ form_label(form.status) }}
+        {{ form_widget(form.status) }}  
+     </div>
+   </div>
+   <div class="row-fluid">
+      <div class="span12"><h3>System</h3>
+      <div class="row-fluid">
+          <div class="span6">
+          {{ form_label(form.idCard) }}
+          {{ form_widget(form.idCard) }}
+          {{ form_label(form.login) }}
+          {{ form_widget(form.login) }}    
+          </div>
+          <div class="span6">
+          {{ form_label(form.admonCode) }}
+          {{ form_widget(form.admonCode) }}
+          {{ form_label(form.sitewideLogin) }}
+          {{ form_widget(form.sitewideLogin) }}
+          </div>
+      </div>    
+      </div>    
+    </div>
+    </div>
+    <div class="span4">
+        {% block basicGroups %}
+        <label>add groups <a href="#" class="btn" id="addgroup">Add a group</a></label>
+        <div class="tags"  data-prototype="{{ form_widget(form.groups.vars.prototype)|e }}">
+        {# itera sobre cada etiqueta existente y reproduce su único campo: name #}
+        {% for group in form.groups %}
+        <div class="groups">
+        {{ form_row(group.group) }}
+        {{ form_row(group.primaryGroup) }}
+        </div>
+        {% endfor %}
+        </div>
+        {% endblock %}
+    </div>
+         {% for media in form.mediacommunication %}
+        <div class="groups">
+        {{ form_row(media.media) }}
+        {{ form_row(media.mediaType) }}
+        </div>
+        {% endfor %}
+  </div>
+</div><!--cierro los 12-->
+</div><!--cierro row-->
+{% endblock  %}

@@ -1,0 +1,41 @@
+CREATE  OR REPLACE VIEW `booking_db`.`view_resources` AS
+select r.id as resource_id, r.name as resource_name, r.description as resource_description, r.quantity as resource_quantity,
+r.time_before_booking as resource_timeleft, r.is_active as resource_active, rc.id as category_id, rc.name as category_name, 
+rc.description as category_description, th.id as timetable_id, th.name as timetable_name from resource r, resource_category rc, timetableheader th where r.category_id = rc.id and r.timetable_id = th.id;
+
+-- --------------------------------------------------
+
+CREATE  OR REPLACE VIEW `booking_db`.`view_rooms` AS
+select r.id as room_id, r.name as room_name, r.description as room_description, s.id as section_id, s.name as section_name, s.description as section_description 
+from room r, section s where r.section_id = s.id;
+
+-- --------------------------------------------------
+
+use booking_db;
+delimiter $$
+
+CREATE VIEW `booking_db`.`view_booking` AS 
+select `be`.`booking_id` AS `booking_id`,`be`.`id` AS `event_id`,`bh`.`subject` AS `subject`,`bh`.`location` AS `location`,
+`rm`.`name` AS `room`,`bh`.`description` AS `description`,`be`.`resource_id` AS `resource_id`,`rs`.`name` AS `resource`,
+`be`.`quantity` AS `quantity`,`be`.`bdate` AS `booking_date`,`be`.`start_time` AS `start_time`,
+`be`.`end_time` AS `end_time`,cast(concat(`be`.`bdate`,'T',`be`.`start_time`,'Z') as char charset utf8) AS `starttime`,
+cast(concat(`be`.`bdate`,'T',`be`.`end_time`,'Z') as char charset utf8) AS `endtime`,`bh`.`owner` AS `owner`,
+`bh`.`ip` AS `ip`,`bh`.`created_date` AS `created_date`,
+
+if(((select count(distinct bdate) from `booking_db`.`bookingevents` 
+where (`booking_db`.`bookingevents`.`booking_id` = `be`.`booking_id`)) > 1),'t','f') AS `series`,
+
+(select stickevents(`be`.`booking_id`)) as `events_id`
+
+from (((`booking_db`.`bookingheader` `bh` join `booking_db`.`bookingevents` `be` on((`bh`.`id` = `be`.`booking_id`))) 
+join `booking_db`.`resource` `rs` on((`rs`.`id` = `be`.`resource_id`))) 
+join `booking_db`.`room` `rm` on((`rm`.`id` = `bh`.`location`)));$$
+
+-- ---------------------------------------------------------------------------------------
+
+create view view_room_resource as
+select lnk.id as id, lnk.room_id, rm.name as room_name, 
+lnk.resource_id, rs.name as resource_name 
+from link_resource_room lnk
+join room rm on lnk.room_id = rm.id 
+join resource rs on lnk.resource_id = rs.id;

@@ -1,0 +1,13 @@
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: admissions
+    database_user: admissions
+    database_password: trali20ausa
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    locale: en
+    secret: 50cf7f4e67a3670b8a76516383c95a80600c60ed

@@ -1,0 +1,20 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>AbcMembersGroups creation</h1>
+
+    <form action="{{ path('isystem_admin_membersgroups_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <button type="submit">Create</button>
+        </p>
+    </form>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('isystem_admin_membersgroups') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

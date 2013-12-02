@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ExtraCourseSubsession" table="extra_course_subsession">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="maxMembers" type="integer" column="max_members" nullable="false"/>
+    <field name="active" type="string" column="active" nullable="false"/>
+    <many-to-one field="idSubsession" target-entity="ExtraSubsession">
+      <join-columns>
+        <join-column name="id_subsession" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCourse" target-entity="ExtraCourse">
+      <join-columns>
+        <join-column name="id_course" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="member" target-entity="AbcStudents" mapped-by="idCourseSubsesion"/>
+    <many-to-many field="idGrade" target-entity="AbcGrade" inversed-by="idCourseSubsession">
+      <join-table name="extra_course_subsession_grade">
+        <join-columns>
+          <join-column name="id_course_subsession" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="id_grade" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="idDay" target-entity="ExtraDay" mapped-by="idCourseSubsession"/>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,69 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>AbcMembers list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Idcard</th>
+                <th>Admoncode</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Middlename</th>
+                <th>Birthdate</th>
+                <th>Gender</th>
+                <th>Placeofbirthdate</th>
+                <th>Nickname</th>
+                <th>Login</th>
+                <th>Sitewidelogin</th>
+                <th>Status</th>
+                <th>Createddate</th>
+                <th>Password</th>
+                <th>Salt</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('isystem_admin_members_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.idCard }}</td>
+                <td>{{ entity.admonCode }}</td>
+                <td>{{ entity.lastname }}</td>
+                <td>{{ entity.firstname }}</td>
+                <td>{{ entity.middlename }}</td>
+                <td>{% if entity.birthdate %}{{ entity.birthdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.gender }}</td>
+                <td>{{ entity.placeOfBirthdate }}</td>
+                <td>{{ entity.nickname }}</td>
+                <td>{{ entity.login }}</td>
+                <td>{{ entity.sitewideLogin }}</td>
+                <td>{{ entity.status }}</td>
+                <td>{% if entity.createdDate %}{{ entity.createdDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.password }}</td>
+                <td>{{ entity.salt }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('isystem_admin_members_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('isystem_admin_members_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('isystem_admin_members_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

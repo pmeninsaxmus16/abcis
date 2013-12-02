@@ -1,0 +1,48 @@
+<mockup version="1.0" skin="sketch" measuredW="1115" measuredH="626" mockupW="1049" mockupH="610">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="66" y="16" w="1049" h="610" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Maintenance</text>
+        <value>0</value>
+        <verticalScrollbar>false</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::TabBar" x="99" y="158" w="980" h="423" measuredW="395" measuredH="100" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>0</selectedIndex>
+        <text>Resources%2C%20Rooms%2C%20Timetable%2C%20Administrators</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::ButtonBar" x="113" y="96" w="-1" h="-1" measuredW="339" measuredH="31" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>1</selectedIndex>
+        <text>Home%2C%20Administration%2C%20Reports%2C%20Log%20out</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::DataGrid" x="136" y="251" w="891" h="273" measuredW="518" measuredH="88" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Name%2C%20Description%2C%20Quantity%2C%20Category%2C%20Options%0APAC%2C%20Performance%20Art%20Centre%2C%201%2C%20Buildings%2C%20x%0ALaptops%20Languages%2C%20Laptops%2C%2023%2C%20Languages%2C%20x</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::ComboBox" x="942" y="211" w="-1" h="-1" measuredW="85" measuredH="25" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Buildings</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Label" x="835" y="210" w="-1" h="-1" measuredW="101" measuredH="25" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Pick%20a%20category</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::SearchBox" x="136" y="210" w="-1" h="-1" measuredW="171" measuredH="25" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Look%20for%20resource%20name</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::ButtonBar" x="137" y="538" w="-1" h="-1" measuredW="275" measuredH="31" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%3C%3C%2C%20%3C%2C%201%2C%202%2C%203%2C%20%3E%2C%20%3E%3E</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
