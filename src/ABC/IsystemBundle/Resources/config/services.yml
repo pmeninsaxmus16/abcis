@@ -9,3 +9,11 @@ services:
         class: Twig_Extensions_Extension_Text
         tags:
             - { name: twig.extension }
+    imageResize:
+        class: ABC\IsystemBundle\Service\imageResizeService
+        arguments: 
+            entityManagerMy: "@doctrine.orm.default_entity_manager"
+    imageCrop:
+        class: ABC\IsystemBundle\Service\imageCropService
+        arguments: 
+            entityManagerMy: "@doctrine.orm.default_entity_manager"           

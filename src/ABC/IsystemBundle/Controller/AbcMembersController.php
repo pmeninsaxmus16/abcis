@@ -59,7 +59,7 @@ class AbcMembersController extends Controller
       $request = $this->getRequest();
       $search  = $request->query->get('search'); // get a $_GET parameter
       
-      $em = $this->getDoctrine()->getManager();
+      $em = $this->get('doctrine')->getManager('default');
       $resultados = $this->container->getParameter('resultados');
       if(!$search)
           $entities = $em->getRepository('ABCIsystemBundle:AbcMembers')->findAll();
@@ -183,6 +183,7 @@ class AbcMembersController extends Controller
     $em = $this->getDoctrine()->getManager();
     $member = $em->getRepository('ABCIsystemBundle:AbcMembers')->find($id);
     $memberGroup = $em->getRepository('ABCIsystemBundle:AbcStudents')->findOneBy(array('member'=>$id));
+    
     if (!$member) {
         throw $this->createNotFoundException('No task found for is '. $id);
     }

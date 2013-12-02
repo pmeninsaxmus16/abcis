@@ -26,7 +26,18 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
-
+    globals:
+        dir_staff: '/uploads/staff'
+        dir_students: '/uploads/students'
+        dir_parents: '/uploads/parents'
+        dir_other: '/uploads/others'
+# Parámetros globales del contenedor de dependencias
+parameters:
+    photo.staff: %kernel.root_dir%/../web/photos/staff/
+    photo.students: %kernel.root_dir%/../web/photos/students/
+    photo.parents: %kernel.root_dir%/../web/photos/parents/
+    photo.others: %kernel.root_dir%/../web/photos/others/
+    photo.targetPath: %kernel.root_dir%/../web/photos/
 # Assetic Configuration
 assetic:
     debug:          %kernel.debug%
@@ -60,13 +71,18 @@ doctrine:
                     varbinary: string
                     tinyblob: text 
             admission:
-                driver:   "%database_driver%"
-                host:     "%database_host%"
-                port:     "%database_port%"
-                dbname:   "admissions"
-                user:     "%database_user%"
-                password: "%database_password%"
+                driver:   %database_driver2%
+                host:     %database_host2%
+                port:     %database_port2%
+                dbname:   %database_name2%
+                user:     %database_user2%
+                password: %database_password2%
                 charset:  UTF8
+                mapping_types:
+                    enum: string
+                    set: string
+                    varbinary: string
+                    tinyblob: text 
         # if using pdo_sqlite as your database driver, add the path in parameters.yml
         # e.g. database_path: %kernel.root_dir%/data/data.db3
         # path:     %database_path%
