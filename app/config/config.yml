@@ -27,10 +27,11 @@ twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
     globals:
-        dir_staff: '/uploads/staff'
-        dir_students: '/uploads/students'
-        dir_parents: '/uploads/parents'
-        dir_other: '/uploads/others'
+        dir_staff: 'photos/staff'
+        dir_students: 'photos/students'
+        dir_parents: 'photos/parents'
+        dir_other: 'photos/others'
+        dir_root: 'photos'
 # Parámetros globales del contenedor de dependencias
 parameters:
     photo.staff: %kernel.root_dir%/../web/photos/staff/

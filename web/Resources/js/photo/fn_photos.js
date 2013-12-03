@@ -1,12 +1,13 @@
-function uploadPhoto(id,idCard,userType,group,urlUpload,urlCrop){
-    
+function uploadPhoto(id,idCard,userType,group,urlUpload,urlCrop, dir ){
+
         $(id).pekeUpload({
         theme:'bootstrap', 
         allowedExtensions:"jpeg|jpg|png|gif", 
         url:  urlUpload,
         onFileSuccess: function(file,data){ 
             var ext = file.name.split('.').pop();           
-            $('.modal-body').html('<center><img id="target" src="/abcis/web/photos/'+userType+'/'+group+'/'+file.name+'"></center><br><br>');
+            
+            $('.modal-body').html('<center><img id="target" src="'+dir+'/'+group+'/'+file.name+'"></center><br><br>');
             $('#myModal').modal('show');
             $('#myModal').css({
                   width:'800px',
@@ -46,7 +47,7 @@ function uploadPhoto(id,idCard,userType,group,urlUpload,urlCrop){
 		    });
                     setTimeout(function(){
                      $('#imgMember').html('');
-                     $('#imgMember').html('<img class="img-polaroid" width="120" height="180" src="/abcis/web/photos/'+userType+'/'+group+'/'+idCard+'.'+ext+'"><br>');
+                     $('#imgMember').html('<img class="img-polaroid" width="120" height="180" src="'+dir+'/'+group+'/'+idCard+'.'+ext+'"><br>');
                     }, 2000);
               });
             

@@ -42,7 +42,7 @@
      </ul>
      <div class="tab-content">
         <div class="tab-pane active" id="tab1">
-        {{frmMember.basic(form, member.idCard,memberGroup)}}       
+        {{frmMember.basic(form, member.idCard,memberGroup,'students')}}       
         </div>
         <div class="tab-pane" id="tab2">       
         </div>     
@@ -77,13 +77,15 @@ $(document).ready(function(){
         todayBtn: 'linked',
         viewMode: 'years'
     }); 
+
     uploadPhoto(
             "#file",
             '{{member.idCard}}',
             '{{memberType}}',
             '{{memberGroup}}',
             '{{path('isystem_upload',{'idcard':member.idCard ,'folder': memberType,'subfolder':memberGroup})}}',
-            '{{path('isystem_crop')}}'
+            '{{path('isystem_crop')}}',
+            '{{asset(dir_students)}}'
      );    
 
      });

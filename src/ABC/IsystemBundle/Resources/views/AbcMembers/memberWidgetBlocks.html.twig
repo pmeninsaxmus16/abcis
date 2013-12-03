@@ -1,4 +1,4 @@
-{% macro basic(form,idCard,memberGroup) %}
+{% macro basic(form,idCard,memberGroup,userType) %}
   <div class="row-fluid">
     <div class="span6">
     {{ form_label(form.lastname) }}
@@ -52,7 +52,7 @@
     </div>
     <!--PHOTO-->
     <div class="span6">
-     {{_self.photo(idCard,memberGroup)}}
+     {{_self.photo(idCard,memberGroup,userType)}}
     </div> 
   </div>
 {% endmacro  %}
@@ -96,8 +96,12 @@
         </div>
   </div>
 {% endmacro  %}
-{% macro photo(idUser,memberGroup) %}
-<div id="imgMember"><img src="/abcis/web/photos/students/{{memberGroup}}/{{idUser}}.JPG"  width="120" height="180" class="img-polaroid"/></div>
+{% macro photo(idUser,memberGroup,userType) %}
+{% if (userType =='staff') %} {% set directory = dir_staff %}{% endif %}
+{% if (userType =='students') %} {% set directory = dir_students %}{% endif %}
+{% if (userType =='parents') %} {% set directory = dir_parents %}{% endif %}
+{% if (userType =='others') %} {% set directory = dir_others %}{% endif %}
+<div id="imgMember"><img src="{{asset(directory ~'/' ~ memberGroup ~'/'~ idUser ~'.JPG') }}"  width="120" height="180" class="img-polaroid"/></div>
 <input type="file" id="file" name="file" />
 {% endmacro  %}
  
