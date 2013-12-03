@@ -27,6 +27,19 @@ class AbcPhotoController extends Controller
     {
         if (!empty($_FILES)) {
             $tempFile =  $_FILES['file']['tmp_name'];
+            $imagen = getimagesize($tempFile);    //Sacamos la información
+            $ancho = $imagen[0]; //Ancho
+            $alto = $imagen[1];  //Alto 
+            if($ancho > 640 and $alto >480){
+                    $resize= $this->get('imageResize');                    
+                    // set maximum height within wich the image should be resized
+                    $resize->max_height(480);
+                    // set maximum width within wich the image should be resized
+                    $resize->max_width(640);
+                    $resize->image_path($tempFile);
+                    // call the functio to resize the image
+                    $resize->image_resize();
+            }
             $targetPath = $resultados = $this->container->getParameter('photo.targetPath');
 
             // Validate the file type

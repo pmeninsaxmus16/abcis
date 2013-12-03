@@ -51,6 +51,23 @@ private $emMy;
 				$this->image = imagecreatefrompng($this->path);
 			break;
 		}
+	}
+	function create_image_resize($image_resized)
+	{
+		switch($this->mime)
+		{
+			case 'image/jpeg':
+				imagejpeg($image_resized,$this->path);
+			break;
+			
+			case 'image/gif':
+				imagegif($image_resized,$this->path);
+			break;
+			
+			case 'image/png':
+				imagepng($image_resized,$this->path);
+			break;
+		}
 	}	
 	function image_resize()
 		{
@@ -62,7 +79,8 @@ private $emMy;
 				$this->set_dimension();
 				$image_resized = imagecreatetruecolor($this->new_width,$this->new_height);
 				imagecopyresampled($image_resized, $this->image, 0, 0, 0, 0, $this->new_width, $this->new_height,$this->width, $this->height);
-				imagejpeg($image_resized,$this->path);
+				$this->create_image_resize($image_resized);
+				//imagejpeg($image_resized,$this->path);
 						
 		}
 		
