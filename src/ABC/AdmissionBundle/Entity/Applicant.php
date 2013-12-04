@@ -146,9 +146,17 @@ class Applicant
      */
     private $living;
 
+    private $name;
+    
+    public function getName() {
+        return $this->surname.', '.$this->forename.' '.$this->middle ;
+    }
 
+    public function setName() {
+        $this->name = $this->forename.' '.$this->middle.' '.$this->surname ;
+    }
 
-    /**
+        /**
      * Get id
      *
      * @return integer 

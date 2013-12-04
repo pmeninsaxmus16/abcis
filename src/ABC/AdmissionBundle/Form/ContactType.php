@@ -5,6 +5,7 @@ namespace ABC\AdmissionBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Doctrine\ORM\EntityRepository;
 
 class ContactType extends AbstractType
 {
@@ -30,12 +31,42 @@ class ContactType extends AbstractType
             ->add('responsible')
             ->add('position')
             ->add('eMail')
-            ->add('createdDate')
-            ->add('ip')
+            //->add('createdDate')
+            //->add('ip')
             ->add('isPayer')
-            ->add('applicant')
-            ->add('maritalStatus')
-            ->add('relationship')
+            ->add('applicant','entity',
+                 array(
+		'label'=>'Select *',
+		'class'=>'ABCAdmissionBundle:Applicant',
+                'query_builder' => function(EntityRepository $er) {
+				return $er->createQueryBuilder('s')
+				->select("s")	
+                                ->orderBy('s.surname, s.forename');
+                               ; 		
+				},
+		'property'=>'name'))
+            ->add('maritalStatus','entity',
+                 array(
+		'label'=>'Select marital status *',
+		'class'=>'ABCAdmissionBundle:MaritalStatus',
+                'query_builder' => function(EntityRepository $er) {
+				return $er->createQueryBuilder('s')
+				->select("s")	
+                                 
+                               ; 		
+				},
+		'property'=>'name'
+                 ))
+            ->add('relationship','entity',
+                 array(
+		'label'=>'Select relationship *',
+		'class'=>'ABCAdmissionBundle:Relationship',
+                'query_builder' => function(EntityRepository $er) {
+				return $er->createQueryBuilder('s')
+				->select("s")	
+                               ; 		
+				},
+		'property'=>'name',))
         ;
     }
     
