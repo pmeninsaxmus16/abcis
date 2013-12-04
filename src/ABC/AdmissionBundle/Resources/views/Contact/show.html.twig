@@ -1,0 +1,100 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Contact</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Surname</th>
+                <td>{{ entity.surname }}</td>
+            </tr>
+            <tr>
+                <th>Middle</th>
+                <td>{{ entity.middle }}</td>
+            </tr>
+            <tr>
+                <th>Forename</th>
+                <td>{{ entity.forename }}</td>
+            </tr>
+            <tr>
+                <th>Idtype</th>
+                <td>{{ entity.idType }}</td>
+            </tr>
+            <tr>
+                <th>Idnumber</th>
+                <td>{{ entity.idNumber }}</td>
+            </tr>
+            <tr>
+                <th>Citizenship</th>
+                <td>{{ entity.citizenship }}</td>
+            </tr>
+            <tr>
+                <th>Languagesspoken</th>
+                <td>{{ entity.languagesSpoken }}</td>
+            </tr>
+            <tr>
+                <th>Schoolattended</th>
+                <td>{{ entity.schoolAttended }}</td>
+            </tr>
+            <tr>
+                <th>Abcpromotionyear</th>
+                <td>{{ entity.abcPromotionyear }}</td>
+            </tr>
+            <tr>
+                <th>Homephonenumber</th>
+                <td>{{ entity.homePhonenumber }}</td>
+            </tr>
+            <tr>
+                <th>Mobilephonenumber</th>
+                <td>{{ entity.mobilePhonenumber }}</td>
+            </tr>
+            <tr>
+                <th>Employer</th>
+                <td>{{ entity.employer }}</td>
+            </tr>
+            <tr>
+                <th>Responsible</th>
+                <td>{{ entity.responsible }}</td>
+            </tr>
+            <tr>
+                <th>Position</th>
+                <td>{{ entity.position }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.eMail }}</td>
+            </tr>
+            <tr>
+                <th>Createddate</th>
+                <td>{{ entity.createdDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Ip</th>
+                <td>{{ entity.ip }}</td>
+            </tr>
+            <tr>
+                <th>Ispayer</th>
+                <td>{{ entity.isPayer }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('admission_contact_applicant') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('admission_contact_applicant_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Contact list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Surname</th>
+                <th>Middle</th>
+                <th>Forename</th>
+                <th>Idtype</th>
+                <th>Idnumber</th>
+                <th>Citizenship</th>
+                <th>Languagesspoken</th>
+                <th>Schoolattended</th>
+                <th>Abcpromotionyear</th>
+                <th>Homephonenumber</th>
+                <th>Mobilephonenumber</th>
+                <th>Employer</th>
+                <th>Responsible</th>
+                <th>Position</th>
+                <th>Email</th>
+                {#<th>Createddate</th>#} 
+                <th>Ip</th>
+                <th>Ispayer</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('admission_contact_applicant_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.surname }}</td>
+                <td>{{ entity.middle }}</td>
+                <td>{{ entity.forename }}</td>
+                <td>{{ entity.idType }}</td>
+                <td>{{ entity.idNumber }}</td>
+                <td>{{ entity.citizenship }}</td>
+                <td>{{ entity.languagesSpoken }}</td>
+                <td>{{ entity.schoolAttended }}</td>
+                <td>{{ entity.abcPromotionyear }}</td>
+                <td>{{ entity.homePhonenumber }}</td>
+                <td>{{ entity.mobilePhonenumber }}</td>
+                <td>{{ entity.employer }}</td>
+                <td>{{ entity.responsible }}</td>
+                <td>{{ entity.position }}</td>
+                <td>{{ entity.eMail }}</td>
+                {# <td>{% if entity.createdDate %}{{ entity.createdDate|date('Y-m-d H:i:s') }}{% endif %}</td>#}
+                <td>{{ entity.ip }}</td>
+                <td>{{ entity.isPayer }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('admission_contact_applicant_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admission_contact_applicant_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('admission_contact_applicant_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}
