@@ -3,6 +3,7 @@ app/bootstrap.php.cache
 app/bootstrap_cache.php.cache
 app/config/parameters.ini
 app/config/parameters.yml
+app/config/parametersAdmission.yml
 app/cache/*
 app/logs/*
 app/config/*
@@ -11,6 +12,11 @@ web/bundles/*
 web/css/*
 web/js/*
 web/uploads/*
+
+# -- Roor    -----------------------------------------
+cambiopassword.php
+fnccambiopassword.php
+carne.jpg
 
 # -- Composer -----------------------------------------
 composer.phar
