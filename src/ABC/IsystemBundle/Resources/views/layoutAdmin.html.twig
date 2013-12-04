@@ -57,9 +57,11 @@
      {% block box %}
         {# BLOCK DE MENSAJE #}
         <div class="row-fluid">
+        <div id="alert">
         {% block alert %}
-        {% include "ABCIsystemBundle:AbcLayout:alert.html.twig" with {"header": "Success", "message":"The operation completed successfully" }  %}	      
+        {% include "ABCIsystemBundle:AbcLayout:alert.html.twig" with {"header": "Success", "message":"The operation completed successfully" }  %}	              
         {% endblock %}
+        </div>
         </div>         
         {# BLOCK DE MENSAJE #}
         {% block contenido %}

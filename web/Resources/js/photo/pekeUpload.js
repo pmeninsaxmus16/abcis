@@ -104,17 +104,19 @@
                   options.onFileSuccess(file,data);
                 }
                 else{
-                  /*options.onFileError(file,data);
+                  options.onFileError(file,data);
                   obj.next('a').next('div').find('.file:first').remove();
                   if((options.theme == "bootstrap")&&(options.showErrorAlerts==true)){
-                    obj.next('a').next('div').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button> '+data+'</div>');
-                    bootstrapclosenotification();
+                    $("#alert").html('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button> <h4>Error</h4>'+data+'</div>');
+                    $(".alert").delay(2000).fadeOut("slow", function () { $('.alert-error').remove(); });
+                    //obj.next('a').next('div').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button> '+data+'</div>');
+                    //bootstrapclosenotification();
                   }
                   if((options.theme == "custom")&&(options.showErrorAlerts==true)){
 
                     obj.next('a').next('div').prepend('<div class="alert-pekeupload"><button type="button" class="close" data-dismiss="alert">&times;</button> '+data+'</div>');
                     customclosenotification();
-                  }*/
+                  }
                   error = false;
                 }
             },
@@ -154,8 +156,10 @@
         if (validationresult == false){
           canUpload = false;
           if((options.theme == "bootstrap")&&(options.showErrorAlerts==true)){
-            obj.next('a').next('div').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button> '+options.invalidExtError+'</div>');
-            bootstrapclosenotification();
+            //obj.next('a').next('div').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button> '+options.invalidExtError+'</div>');
+            //bootstrapclosenotification();
+            $("#alert").html('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button> <h4>Error</h4>'+options.invalidExtError+'</div>');
+            $(".alert").delay(2000).fadeOut("slow", function () { $('.alert-error').remove(); });
           }
           if((options.theme == "custom")&&(options.showErrorAlerts==true)){
             obj.next('a').next('div').prepend('<div class="alert-pekeupload"><button type="button" class="close">&times;</button> '+options.invalidExtError+'</div>');
@@ -172,8 +176,10 @@
         if (validationresult == false){
           canUpload = false;
           if((options.theme == "bootstrap")&&(options.showErrorAlerts==true)){
-            obj.next('a').next('div').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button> '+options.sizeError+'</div>');
-            bootstrapclosenotification();
+            //obj.next('a').next('div').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button> '+options.sizeError+'</div>');
+            //bootstrapclosenotification();
+            $("#alert").html('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button> <h4>Error</h4>'+options.sizeError+'</div>');
+            $(".alert").delay(2000).fadeOut("slow", function () { $('.alert-error').remove(); });
           }
           if((options.theme == "custom")&&(options.showErrorAlerts==true)){
             obj.next('a').next('div').prepend('<div class="alert-pekeupload"><button type="button" class="close" data-dismiss="alert">&times;</button> '+options.sizeError+'</div>');

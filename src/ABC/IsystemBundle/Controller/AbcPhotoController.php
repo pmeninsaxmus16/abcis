@@ -30,6 +30,7 @@ class AbcPhotoController extends Controller
             $imagen = getimagesize($tempFile);    //Sacamos la información
             $ancho = $imagen[0]; //Ancho
             $alto = $imagen[1];  //Alto 
+            $var = 'si';
             if($ancho > 640 and $alto >480){
                     $resize= $this->get('imageResize');                    
                     // set maximum height within wich the image should be resized
@@ -39,20 +40,29 @@ class AbcPhotoController extends Controller
                     $resize->image_path($tempFile);
                     // call the functio to resize the image
                     $resize->image_resize();
+                    $var = 'si';
             }
-            $targetPath = $resultados = $this->container->getParameter('photo.targetPath');
+            elseif($ancho < 640 and $alto <480){
+                    $var = 'no';
+            }
+            if($var=='si'){
+                $targetPath = $resultados = $this->container->getParameter('photo.targetPath');
 
-            // Validate the file type
-            $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
-            $fileParts = pathinfo($_FILES['file']['name']);
-            $targetFile = rtrim($targetPath,'/') . '/' . $folder.'/'.$subfolder.'/'.$_FILES['file']['name'];
+                // Validate the file type
+                $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
+                $fileParts = pathinfo($_FILES['file']['name']);
+                $targetFile = rtrim($targetPath,'/') . '/' . $folder.'/'.$subfolder.'/'.$_FILES['file']['name'];
 
-            if (in_array(strtolower($fileParts['extension']),$fileTypes) ) {
-                    move_uploaded_file("$tempFile","$targetFile");
-                    chmod($targetFile,0777);
-                    return new Response('1');
-            } else {
-                  return new Response('echo \'Invalid file type.');
+                if (in_array(strtolower($fileParts['extension']),$fileTypes) ) {
+                        move_uploaded_file("$tempFile","$targetFile");
+                        chmod($targetFile,0777);
+                        return new Response('1');
+                } else {
+                      return new Response('Invalid file type.');
+                }
+            }else{
+                
+                return new Response('Invalid file, Min Pixel Dimensions: 640 x 480');
             }
         }
     }

@@ -4,9 +4,9 @@ function uploadPhoto(id,idCard,userType,group,urlUpload,urlCrop, dir ){
         theme:'bootstrap', 
         allowedExtensions:"jpeg|jpg|png|gif", 
         url:  urlUpload,
+        maxSize: 2,
         onFileSuccess: function(file,data){ 
             var ext = file.name.split('.').pop();           
-            
             $('.modal-body').html('<center><img id="target" src="'+dir+'/'+group+'/'+file.name+'" width="640"></center><br><br>');
             $('#myModal').modal('show');
             $('#myModal').css({
@@ -81,7 +81,7 @@ function uploadPhoto(id,idCard,userType,group,urlUpload,urlCrop, dir ){
               });
                 },
         onFileError:function(file,error){
-             alert("error on file: "+file.name+" error: "+error+"");
+             //alert(""+error+"\nError on file: "+file.name+" ");
             }
         });
 
