@@ -13,6 +13,11 @@ web/css/*
 web/js/*
 web/uploads/*
 
+# -- Roor    -----------------------------------------
+cambiopassword.php
+fnccambiopassword.php
+carne.jpg
+
 # -- Composer -----------------------------------------
 composer.phar
 
