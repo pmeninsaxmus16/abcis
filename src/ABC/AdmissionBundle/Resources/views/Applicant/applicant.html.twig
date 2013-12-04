@@ -11,14 +11,23 @@
    <div class="block-content collapse in">
    <div class="tabbable tabs-left">
     <ul class="nav nav-tabs">
-       <li class="active"><a href="#personal_data">1. PERSONAL DATA<br>Información personal</a></li>
-       <li><a href="#">2. SCHOOL INFORMATION<br>Información escolar</a></li>
-       <li><a href="#">3. CONTACT INFORMATION<br>Información de contacto</a></li>
-       <li><a href="#">4. CONTACT INFORMATION<br>Información de contacto</a></li>
+       <li class="active"><a href="#personal_data" data-toggle="tab">1. PERSONAL DATA<br>Información personal</a></li>
+       <li><a href="#school_information" data-toggle="tab">2. SCHOOL INFORMATION<br>Información escolar</a></li>
+       <li><a href="#question_information" data-toggle="tab">3. CONTACT INFORMATION<br>Información de contacto</a></li>
+       <li><a href="#contact_information" data-toggle="tab">4. CONTACT INFORMATION<br>Información de contacto</a></li>
     </ul>
    <div class="tab-content">
       <div class="tab-pane active" id="personal_data">
           {%include 'ABCAdmissionBundle:Applicant:personalData.html.twig'%}
+      </div>
+      <div class="tab-pane" id="school_information">
+          
+      </div>
+      <div class="tab-pane" id="questions_information">
+          
+      </div>
+      <div class="tab-pane" id="contact_information">
+          {%include 'ABCAdmissionBundle:Applicant:contactInformation.html.twig'%}
       </div>
    </div>      
    </div> 
