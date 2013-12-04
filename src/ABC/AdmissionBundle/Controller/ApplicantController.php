@@ -13,34 +13,22 @@ use ABC\AdmissionBundle\Form\ApplicantType;
 /**
  * Applicant controller.
  *
- * @Route("/abcis/admission/applicant")
+ * @Route("/admission/applicant")
  */
 class ApplicantController extends Controller
 {
      /**
      * Lists layoutApplicante entities.
      *
-     * @Route("/applicants", name="admission_applicants")
+     * @Route("/form", name="admission_applicants")
      * @Method("GET")
      * @Template()
      */
     public function applicantAction()
     {
-       // return $this->render('ABCAdmissionBundle:Applicant:applicant.html.twig', array('name' => 'Bienvenido'));
        $entity = new Applicant();
-      /* $entity->getSurname();
-       $entity->getForename();
-       $entity->getMiddle();
-       $entity->getDob();
-       $entity->getPob();
-       $entity->getCitizenship();
-       $entity->getGender();
-       $entity->getReligion();
-       $entity->getFirstLanguage();
-       $entity->getSecondLanguage();*/
        $form   = $this->createForm(new ApplicantType(), $entity);
-
-        return array(
+       return array(
             'entity' => $entity,
             'form'   => $form->createView(),
             );

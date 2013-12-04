@@ -32,15 +32,6 @@
 <body>
 {# ###### BLOCK CONTIENTE TODO EL BODY ##### #}
 {% block body %}
-<div class="row-fluid">
-  <div class="span12">
-     {# ###### BLOCK MUESTRA EL MENU ##### #}
-     {% block menu %}
-     {# {% include 'ABCadmissionBundle:Layout:menu.html.twig' %} #}
-     {% endblock %}
-     {# ###### BLOCK MUESTRA EL MENU ##### #}
-  </div>
-</div>
 <div class="container-fluid">
   <div class="row-fluid">
   <div class="span8 offset2">
@@ -63,9 +54,9 @@
                </center>
         {% endblock %}
         </div>
-        <div class="span3">
+        <div class="span3 pull-right">
         {% block headerPic %}
-             <img src="{{ asset('Resources/img/user-unknown.gif') }}"/>
+             <img src="{{ asset('Resources/img/user-unknown.gif') }}" class="pull-right"/>
         {% endblock %}
         </div>   
         </div>

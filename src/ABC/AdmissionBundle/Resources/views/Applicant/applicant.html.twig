@@ -2,21 +2,30 @@
 {% block title %} Applicant Form {% endblock %}
 
 {% block contenido %}
-{%import "ABCAdmissionBundle:Applicant:new.html.twig" as newApplicant%}
-
-<div class="span12" id="divtree">
-  <ul class="nav nav-tabs">
+<div class="row-fluid">
+   <!-- block -->
+   <div class="block">
+       <div class="navbar navbar-inner block-header">
+        <div class="muted pull-left">Application for Admission - Formulario de Admision</div>
+       </div>
+   <div class="block-content collapse in">
+   <div class="tabbable tabs-left">
+    <ul class="nav nav-tabs">
        <li class="active"><a href="#personal_data">1. PERSONAL DATA<br>Información personal</a></li>
        <li><a href="#">2. SCHOOL INFORMATION<br>Información escolar</a></li>
        <li><a href="#">3. CONTACT INFORMATION<br>Información de contacto</a></li>
        <li><a href="#">4. CONTACT INFORMATION<br>Información de contacto</a></li>
-  </ul>
-  <div class="tab-content">
+    </ul>
+   <div class="tab-content">
       <div class="tab-pane active" id="personal_data">
-          {%include 'ABCAdmissionBundle:Applicant:new.html.twig'%}
+          {%include 'ABCAdmissionBundle:Applicant:personalData.html.twig'%}
       </div>
-  </div>      
+   </div>      
+   </div> 
+   </div>
+   </div> 
 </div>
+
  
 {% endblock %}
 
