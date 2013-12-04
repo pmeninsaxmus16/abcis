@@ -3,6 +3,7 @@ function uploadPhoto(id,idCard,userType,group,urlUpload,urlCrop, dir ){
         $(id).pekeUpload({
         theme:'bootstrap', 
         allowedExtensions:"jpeg|jpg|png|gif", 
+        btnText: "Upload Photo",
         url:  urlUpload,
         maxSize: 2,
         onFileSuccess: function(file,data){ 

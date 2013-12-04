@@ -1,0 +1,94 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Applicant</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Surname</th>
+                <td>{{ entity.surname }}</td>
+            </tr>
+            <tr>
+                <th>Forename</th>
+                <td>{{ entity.forename }}</td>
+            </tr>
+            <tr>
+                <th>Middle</th>
+                <td>{{ entity.middle }}</td>
+            </tr>
+            <tr>
+                <th>Dob</th>
+                <td>{{ entity.dob|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Pob</th>
+                <td>{{ entity.pob }}</td>
+            </tr>
+            <tr>
+                <th>Citizenship</th>
+                <td>{{ entity.citizenship }}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{ entity.gender }}</td>
+            </tr>
+            <tr>
+                <th>Religion</th>
+                <td>{{ entity.religion }}</td>
+            </tr>
+            <tr>
+                <th>Firstlanguage</th>
+                <td>{{ entity.firstLanguage }}</td>
+            </tr>
+            <tr>
+                <th>Secondlanguage</th>
+                <td>{{ entity.secondLanguage }}</td>
+            </tr>
+            <tr>
+                <th>Createddate</th>
+                <td>{{ entity.createdDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Ip</th>
+                <td>{{ entity.ip }}</td>
+            </tr>
+            <tr>
+                <th>Sessionid</th>
+                <td>{{ entity.sessionId }}</td>
+            </tr>
+            <tr>
+                <th>Entrygrade</th>
+                <td>{{ entity.entryGrade }}</td>
+            </tr>
+            <tr>
+                <th>Entryyear</th>
+                <td>{{ entity.entryYear }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('abcis_admission_applicant') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('abcis_admission_applicant_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('abcis_admission_applicant_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}
