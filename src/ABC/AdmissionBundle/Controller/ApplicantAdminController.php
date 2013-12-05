@@ -184,8 +184,8 @@ return array( 'applicant'=>$applicant,    'result'   => $resultRecord,
     {
          $em = $this->getDoctrine()->getManager('admission');
       
-        //$entity = $em->getRepository('ABCAdmissionBundle:Applicant')->find($id);
-        $entity =$em->getRepository('ABCAdmissionBundle:Applicant')->findApplicant();
+        $entity = $em->getRepository('ABCAdmissionBundle:Applicant')->find($id);
+        //$entity =$em->getRepository('ABCAdmissionBundle:Applicant')->findApplicant();
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Applicant entity.');
