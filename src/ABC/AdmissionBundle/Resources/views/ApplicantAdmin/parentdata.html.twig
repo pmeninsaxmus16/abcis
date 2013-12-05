@@ -1,0 +1,106 @@
+<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <th colspan="2" class="label label-info">{{ contact.name | upper }}</th>
+        </tr>
+        <tr>
+            <th>Surname</th>
+            <td>{{ contact.surname }}</td>
+        </tr>
+        <tr>
+            <th>Forename</th>
+            <td>{{ contact.forename }} {{ contact.middle }}</td>
+        </tr>
+        <tr>
+            <th>{{ contact.idType }}</th>
+            <td>Number {{ contact.idNumber }}</td>
+        </tr>
+        <tr>
+            <th>Citizenship</th>
+            <td>{{ contact.citizenship }}</td>
+        </tr>
+        <tr>
+            <th>Languages spoken</th>
+            <td>{{ contact.languagesSpoken }}</td>
+        </tr>
+        <tr>
+            <th>School attended</th>
+            <td>{{ contact.schoolAttended }}</td>
+        </tr>
+        <tr>
+            <th>ABC promotion year</th>
+            <td>{{ contact.abcPromotionyear }}</td>
+        </tr>
+        <tr>
+            <th>Marital status</th>
+            <td>{{ contact.marital }}</td>
+        </tr>
+        <tr>
+            <th>Is payer</th>
+            <td>{{ contact.isPayer }}</td>
+        </tr>
+        <tr>
+            <th>Responsible</th>
+            <td>{{ contact.responsible }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ contact.eMail }}</td>
+        </tr>
+        <tr>
+            <th colspan="2" class="label label-info">HOME INFORMATION</th>
+        </tr>
+        <tr>
+            <th>Home phone number</th>
+            <td>{{ contact.homePhonenumber }}</td>
+        </tr>
+        <tr>
+            <th>Mobile phone number</th>
+            <td>{{ contact.mobilePhonenumber }}</td>
+        </tr>
+       <tr>
+            <td colspan="2">
+			{#{% render "ABCAdmissionBundle:Applicant:showaddress"  with {'contact_id': cont.id, 'type':'home'} %}#}
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2" class="label label-info">OFFICE INORMATION</th>
+        </tr>
+        <tr>
+            <th>Employer</th>
+            <td>{{ contact.employer }}</td>
+        </tr>
+        <tr>
+            <th>Position</th>
+            <td>{{ contact.position }}</td>
+        </tr>
+
+        {#<tr>
+            <td colspan="2">
+			{% render "ABCadmissionsBundle:Applicant:showaddress"  with {'contact_id': cont.id, 'type':'office'} %}
+            </td>
+        </tr>#}
+       
+
+    </tbody>
+</table>
+{#
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('admin_contact') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('admin_contact_edit', { 'id': contact.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('admin_contact_delete', { 'id': contact.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+#}

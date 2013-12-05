@@ -1,0 +1,113 @@
+{% extends "ABCAdmissionBundle::layout.html.twig" %}
+{% block title %}Applicant List{% endblock %}
+
+
+{% block contenido %}
+<div class="row-fluid">
+    <div class="block">
+    <div class="navbar navbar-inner block-header">
+       <div class="muted pull-left">{{applicant.surname}}, Entry Grade {{applicant.entryGrade}}</div>
+       <div class="pull-right"><span class="badge badge-warning">#</span></div>
+    </div>
+
+         <ul class="nav nav-tabs" id="myTab">
+        
+        {#--------- TAB DEL APLICANTE ----------------#}
+        <li class="active"><a href="#tab1" data-toggle="tab">Applicant Information</a></li>
+        
+        {#--------- TAB DE LA ESCUELA O ESCUELAS ANTERIORES ----------------#}
+        <li class=""><a href="#tab2" data-toggle="tab">School Information</a></li>
+        
+        {#--------- TAB DE LOS PARENT ----------------#}
+        <li class="dropdown" id="menu1">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Parent Information<b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    {% if contact %}
+                    {% for cont in contact %}
+                            {% if cont.name=='mother' %}
+                        <li><a data-toggle="tab" href="#mother">{{ cont.name |  capitalize }}</a></li>
+                            {% elseif cont.name=='father' %}
+                        <li><a data-toggle="tab" href="#father">{{ cont.name |  capitalize }}</a></li>
+                            {% else %}
+                        <li><a data-toggle="tab" href="#{{ cont.name }}">{{ cont.name |  capitalize }}</a></li>
+                            {% endif %}
+                    {% endfor %}
+                    {% else %}
+                <li><a data-toggle="tab" href="#empty">No result</a></li>
+                    {% endif%}
+            </ul>
+        </li>
+        
+        {#--------- TAB DE LOS RESULTADOS DEL EXAMEN ----------------#}
+        <li class="dropdown" id="menu2">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Test Result<b class="caret"></b></a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                {% if results %}
+                {% for result in results %}
+                 <li><a data-toggle="tab" href="#tab_{{ result.id }}">{{ result.dateOfInterview|date('d-m-Y') }}</a></li>
+                {% endfor %}
+                {% else %}
+                <li><a data-toggle="tab" href="#empty">No result</a></li>
+                {% endif%}
+                </ul>
+        </li>
+        
+    </ul>
+
+        
+<div class="tab-content">
+	<div class="tab-pane active" id="tab1">
+		{% include "ABCAdmissionBundle:Applicant:applicantdata.html.twig" %}
+	</div>
+	<div class="tab-pane" id="tab2">
+		{% include "ABCAdmissionBundle:Applicant:schooldata.html.twig" %}
+	</div>
+        {# MUESTRA LOS DATOS DE LOS PARENTS#}
+	{% if contact %}
+		{% for cont in contact %}
+			{% if cont.name=='mother' %}
+		    <div class="tab-pane" id="mother">
+				{#{% include "ABCAdmissionBundle:Applicant:parentdata.html.twig" with {'contact': cont } %}#}
+			</div>
+			{% elseif cont.name=='father' %}
+		    <div class="tab-pane" id="father">
+				{% include 'ABCAdmissionBundle:Applicant:parentdata.html.twig' with {'contact': cont } %}
+			</div>
+			{% else %}
+		    <div class="tab-pane" id="{{ cont.name }}">
+				{% include 'ABCAdmissionBundle:Applicant:parentdata.html.twig' with {'contact': cont } %}
+			</div>
+			{% endif %}
+		{% endfor %}
+	{% endif%}
+    
+        {# MUESTRA LOS DATOS DE LOS RESULTADOS DE LOS EXAMENES#}
+	{% if results %}
+		{% for result in results %}
+		<div class="tab-pane" id="tab_{{result.id}}">
+		{#{% include 'ABCAdmissionBundle:SchoolUseAdmin:showResult.html.twig' with {'result':result,'page':0} %}#}
+		</div>
+		{% endfor %}
+	{% endif %}	
+	<div class="tab-pane" id="empty">
+		<div class="alert alert-info">
+		  <button type="button" class="close" data-dismiss="alert">×</button>
+		  <h4>No Result!</h4>
+		  Not Result Yet...
+		</div>
+		
+	</div>
+	
+</div>        
+    </div>
+    
+    
+<div align="right">
+<a class="btn btn-small btn-primary" href="{{ path('admission_admin_applicant',{'page':1 }) }}">
+	<i class="icon-arrow-left icon-white"></i> Back to the list</a>
+</div> 
+    
+</div>
+
+
+{% endblock %}

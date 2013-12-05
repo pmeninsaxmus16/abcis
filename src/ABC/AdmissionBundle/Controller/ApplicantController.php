@@ -3,12 +3,15 @@
 namespace ABC\AdmissionBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use ABC\AdmissionBundle\Entity\Applicant;
+use ABC\AdmissionBundle\Entity\Results;
 use ABC\AdmissionBundle\Form\ApplicantType;
+use ABC\AdmissionBundle\Form\ResultsType;
 
 /**
  * Applicant controller.

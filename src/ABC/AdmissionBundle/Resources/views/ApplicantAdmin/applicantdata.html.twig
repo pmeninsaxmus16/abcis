@@ -1,0 +1,53 @@
+<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <th>Surname</th>
+            <td>{{applicant.surname}}</td>
+        </tr>
+        <tr>
+            <th>Forename</th>
+            <td>{{applicant.forename }} {{applicant.middle }}</td>
+        </tr>
+        <tr>
+            <th>Date of Birth</th>
+            <td>{{applicant.dob|date('F j, Y') }}</td>
+        </tr>
+        <tr>
+            <th>Place of Birth</th>
+            <td>{{applicant.pob }}</td>
+        </tr>
+        <tr>
+            <th>Citizenship</th>
+            <td>{{applicant.citizenship }}</td>
+        </tr>
+        <tr>
+            <th>Gender</th>
+            <td>{{applicant.gender | capitalize }}</td>
+        </tr>
+        <tr>
+            <th>Religion</th>
+            <td>{{applicant.religion }}</td>
+        </tr>
+        <tr>
+            <th>First language</th>
+            <td>{{applicant.firstLanguage }}</td>
+        </tr>
+        <tr>
+            <th>Second language</th>
+            <td>{{applicant.secondLanguage }}</td>
+        </tr>
+        
+        <tr>
+            <th>Living</th>
+            <td>{{result.liv | capitalize }}</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td><b>{{result.name | capitalize }}</b></td>
+        </tr>
+        <tr>
+            <th>Created date</th>
+            <td>{{applicant.createdDate|date('d-m-Y') }}</td>
+        </tr>
+    </tbody>
+</table>

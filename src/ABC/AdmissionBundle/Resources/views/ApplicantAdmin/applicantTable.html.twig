@@ -1,0 +1,60 @@
+            <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Surname</th>
+                    <th>Forename</th> 
+                    <th>DOB</th>
+                    <th>Entrygrade</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for results in pagination%}
+                <tr>
+                    <td><!--<a href="{{ path('admission_admin_applicant_show', { 'id': results.id }) }}">-->{{ results.id }}<!--</a>--></td>
+                    <td>{{ results.surname }}</td>
+                    <td>{{ results.forename }}</td>
+                    <td>{% if results.dob %}{{ results.dob|date('Y-m-d') }}{% endif %}</td>
+                    <td>{{ results.entryGrade }}</td>
+                    <td>
+                        {{results.name}}
+                        {#<select class="input-medium" id="status_{{results.id}}">
+                            {% for s in status %}
+                                {% if results.status==s.value %}
+                                    <option value="{{s.value}}" selected>{{s.opcion}}</option>
+                                {% else %}
+                                    <option value="{{s.value}}">{{s.opcion}}</option>
+                                {% endif%}
+                            {% endfor%}
+                        </select>#}
+
+                    </td>
+                    <td>
+                    <div class="btn-group">
+                        <a class="btn btn-small btn-primary" href="#">Actions</a>
+                        <a class="btn btn-small btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{ path('admission_admin_applicant_show', { 'id': results.id }) }}">
+                                    <i class="icon-eye-open"></i> More details</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('admission_admin_applicant_edit', { 'id': results.id }) }}">
+                                    <i class="icon-pencil"></i> Edit this Applicant</a>
+                                </li>
+                                <li>
+                                    <a href="{#{{ path('admin_roles_delete', { 'id': entity.id }) }}#}">
+                                    <i class="icon-trash"></i> Delete this Applicant</a></li>
+                           </ul>
+                    </div>
+                    </td>
+                </tr>
+            {% endfor %}
+    </table>
+    <div class="pagination pagination-small pagination-right">
+{{ knp_pagination_render(pagination) }}
+</div>           
+<br>
